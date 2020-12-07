@@ -314,11 +314,17 @@ How can I find verbs which pair with THAT-complementized sentences?
 # 1. Get all the labels that a 1-terminal subtree equal to ['that'] can ever be associated with
 that_labels = set(subtree.label() for tree in treebank.parsed_sents()
                                   for subtree in tree.subtrees()
-                                  if subtree[0] == 'the')
+                                  if subtree[0] == 'that')
 
 '''
 >>> that_labels
-{'NNP', 'DT', 'CD', 'JJ'}
+{'RB', 'DT', 'IN', 'WDT'}
+
+NOTE: In hindsight the 'that' lexical item I'm interested in would be:
+
+>>> nltk.help.upenn_tagset('WDT')
+WDT: WH-determiner
+    that what whatever which whichever
 '''
 
 # 2. Okay, still not clear which of these corresponds to the complementizer use of 'that'
